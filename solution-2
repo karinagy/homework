@@ -1,0 +1,4 @@
+a=2130
+for i in range(0,6):
+    a=a+(a*0.1)+120
+    print(a)
