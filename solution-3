@@ -1,0 +1,5 @@
+list1 = ["hello", 133, "python3", 29,26] 
+ 
+list = ' '.join(map(str,list1)) 
+ 
+print(list) 
