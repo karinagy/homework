@@ -1,0 +1,20 @@
+import random
+
+def xor_cipher(text,key):
+    result = "".join(chr(ord(c1) ^ ord(c2)) for c1, c2 in zip(text, key))
+    return(result)
+
+def xor_uncipher(text_cr,key):
+    result= "".join(chr(ord(c1) ^ ord(c2)) for c1, c2 in zip(text_cr, key))
+    return(result)
+
+text=input("Введите текст для шифрования:")
+key=""
+for i in range(0,len(text)):
+    key=key+str(random.randint(0,9))
+print(key)
+
+text_shifr=xor_cipher(text,key)
+print(text_shifr)
+text_rasshifr=xor_uncipher(text_shifr,key)
+print(text_rasshifr)
