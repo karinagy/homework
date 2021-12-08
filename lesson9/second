@@ -1,0 +1,7 @@
+from car_class import Car
+
+first_car=Car('Mercedes','E500',2000)
+#разгоняет машину до 100 км/ч
+while first_car.speed<100:
+    first_car.higher_speed()
+    print('Speed:',first_car.speed)
