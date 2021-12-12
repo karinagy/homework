@@ -1,0 +1,110 @@
+import math as m
+
+
+#in class Point count sides from entered coordinates for all figure
+
+
+class Point:
+    def __init__(self,x1,y1,x2,y2,x3,y3) -> int:
+        self.x1=x1
+        self.y1=y1
+        self.x2=x2
+        self.y2=y2
+        self.x3=x3
+        self.y3=y3
+    def get_first_side(self):
+        a=m.sqrt((self.x2 - self.x1)**2+(self.y2-self.y1)**2)
+        return a 
+    def get_second_side(self):
+        b=m.sqrt((self.x2 - self.x3)**2+(self.y2-self.y3)**2) 
+        return b
+    def get_third_side(self):
+        c=m.sqrt((self.x3 - self.x1)**2+(self.y3-self.y1)**2)
+        return c
+
+
+class Figure:
+    pass
+
+
+class Circle(Figure):
+    def __init__(self,center,radius) -> int:
+        self.center=center
+        self.radius=radius
+
+#count perimeter for the entered circle
+
+    def get_perimeter(self):
+        perimeter=2*self.radius*m.pi
+        return perimeter
+
+#count square for the entered circle
+
+    def get_square(self):
+        sqare_of_circle=m.pi*self.radius**2
+        return sqare_of_circle
+
+
+
+class Triangle(Figure): 
+    def __init__(self,x1,y1,x2,y2,x3,y3) -> int:
+        self.x1=x1
+        self.y1=y1
+        self.x2=x2
+        self.y2=y2
+        self.x3=x3
+        self.y3=y3
+
+#return sides from coordinates in class Point and rcount perimeter of the triangle
+
+    def get_perimeter(self):
+        perimeter_of_triangle=Point.get_first_side(self)+Point.get_second_side(self)+Point.get_third_side(self)
+        return perimeter_of_triangle
+
+        
+#count sides from coordinates 
+
+    def get_square(self):
+
+#count semiperimeter for the entered triangle
+
+        semiperimeter=(Triangle.get_perimeter(self))/2
+
+#count sqare of the triangle and get sides from class Point
+
+        square=m.sqrt(semiperimeter*(semiperimeter-Point.get_first_side(self))*(semiperimeter-Point.get_second_side(self))*(semiperimeter-Point.get_third_side(self)))
+        return square
+
+
+class Square(Figure):
+    def __init__(self,x1,y1,x2,y2) ->int:
+        self.x1=x1
+        self.y1=y1
+        self.x2=x2
+        self.y2=y2
+    def get_perimeter(self):
+        perimeter_of_square=Point.get_first_side(self)
+        return perimeter_of_square
+    def get_square(self):
+        square=Point.get_first_side(self)
+        return square
+
+
+
+triangle1=Triangle(1,1,2,1,3,2)
+circle1=Circle(2,4)
+square1=Square(1,1,2,1)
+
+
+#count the total area of all figures
+
+general_square=0
+figures=['circle','square','triangle']
+for element in figures:
+    if element=='circle':
+        general_square+=Circle.get_square(circle1)
+    elif element=='square':
+        general_square+=Square.get_square(square1)
+    else:
+        general_square+=Triangle.get_square(triangle1)
+print(general_square)
